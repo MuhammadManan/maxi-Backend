@@ -1,7 +1,6 @@
 require("dotenv").config();
 const PORT = process.env.PORT;
 const http = require("http");
-console.log(PORT);
 
 const server = http.createServer((req, res) => {
   console.log(
@@ -12,6 +11,11 @@ const server = http.createServer((req, res) => {
     "\n method: ",
     req.method
   );
+  res.setHeader("Content-Type", "text/html");
+  res.write(
+    "<html><head><title>MY first Page</title></head><body><h1>Hello from my Node.js Server!</h1></body></html>"
+  );
+  res.end();
 });
 
 server.on("error", (err) => {
