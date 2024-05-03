@@ -5,7 +5,6 @@ console.log(PORT);
 
 const server = http.createServer((req, res) => {
   console.log(req);
-  process.exit();
 });
 
 server.on("error", (err) => {
