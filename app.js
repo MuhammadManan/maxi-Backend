@@ -1,25 +1,15 @@
-var nameOfPerson = "max";
-console.log(nameOfPerson);
+require("dotenv").config();
+const PORT = process.env.PORT;
+const http = require("http");
+console.log(PORT);
 
-var secondName = nameOfPerson;
-console.log(secondName);
+const server = http.createServer((req, res) => {
+  console.log(req);
+});
 
-nameOfPerson = "chris";
-console.log(secondName);
-console.log(nameOfPerson);
-
-console.log("\n");
-var obj = {
-  age: 22,
-  name: "Ali",
-  hobbies: ["reading", "coding"],
-};
-
-console.log(obj);
-
-var obj1 = obj;
-console.log(obj1);
-
-obj.name = 43;
-
-console.log(obj1);
+server.on("error", (err) => {
+  console.log(err.message);
+});
+server.listen(PORT, () => {
+  console.log("Server is running on Port: ", PORT);
+});
