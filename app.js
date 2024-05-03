@@ -4,7 +4,14 @@ const http = require("http");
 console.log(PORT);
 
 const server = http.createServer((req, res) => {
-  console.log(req);
+  console.log(
+    "URl: ",
+    req.url,
+    "\n Header: ",
+    req.headers,
+    "\n method: ",
+    req.method
+  );
 });
 
 server.on("error", (err) => {
