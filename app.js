@@ -9,5 +9,5 @@ server.on("error", (err) => {
   console.log(err.message);
 });
 server.listen(PORT, () => {
-  console.log("Server is running on Port: ", PORT);
+  console.log("Server is running on Port:", PORT);
 });
