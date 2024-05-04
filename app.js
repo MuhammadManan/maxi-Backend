@@ -7,6 +7,10 @@ const adminData = require("./routes/admin.js");
 const shopRoutes = require("./routes/shop.js");
 const app = express();
 
+// express got the template engine and also view(find the pug pages)
+app.set("view engine", "pug");
+app.set("views", "views");
+
 // parse the body of incoming request
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
