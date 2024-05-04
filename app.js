@@ -9,6 +9,8 @@ const app = express();
 
 // parse the body of incoming request
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
+console.log(path.join(__dirname, "public"));
 
 // Routing to specific middleware and route
 app.use("/admin", adminRoutes);
