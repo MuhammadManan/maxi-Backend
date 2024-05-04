@@ -3,17 +3,16 @@ const PORT = process.env.PORT || 2000;
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
-const adminRoutes = require("./routes/admin.js");
+const adminData = require("./routes/admin.js");
 const shopRoutes = require("./routes/shop.js");
 const app = express();
 
 // parse the body of incoming request
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-console.log(path.join(__dirname, "public"));
 
 // Routing to specific middleware and route
-app.use("/admin", adminRoutes);
+app.use("/admin", adminData.routes);
 app.use(shopRoutes);
 
 // Routing if url is not found
