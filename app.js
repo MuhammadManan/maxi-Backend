@@ -1,9 +1,11 @@
 require("dotenv").config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 2000;
 const http = require("http");
-const routes = require("./routes.js");
+const express = require("express");
 
-const server = http.createServer(routes);
+const app = express();
+
+const server = http.createServer(app);
 
 server.on("error", (err) => {
   console.log(err.message);

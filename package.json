@@ -1,18 +1,19 @@
 {
-  "dependencies": {
-    "dotenv": "^16.4.5"
-  },
   "name": "maxibackend",
   "description": "Node.js Express.js MongoDB",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {
-    "nodemon": "^3.1.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
