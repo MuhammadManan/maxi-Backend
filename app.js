@@ -10,8 +10,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routing to specific middleware and route
-app.use(adminRoutes);
-app.use(shopRoutes);
+app.use("/admin", adminRoutes);
+app.use("/shop", shopRoutes);
 
 // Routing if url is not found
 app.use((req, res, next) => {
