@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routing to specific middleware and route
 app.use("/admin", adminRoutes);
-app.use("/shop", shopRoutes);
+app.use(shopRoutes);
 
 // Routing if url is not found
 app.use((req, res, next) => {
