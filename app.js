@@ -4,13 +4,18 @@ const express = require("express");
 
 const app = express();
 
-app.use((req, res, next) => {
-  console.log("In the middleware");
-  next(); // Allow the request to continue to the next middleware
+app.use("/", (req, res, next) => {
+  console.log("It always run!");
+  next();
 });
-app.use((req, res, next) => {
+
+app.use("/add-product", (req, res, next) => {
   console.log("In another middleware");
-  res.send("<h1>Good morning Brother!</h1>");
+  res.send("<h1>Route for Add Product!</h1>");
+});
+app.use("/", (req, res, next) => {
+  console.log("In the middleware");
+  res.send("<h1>Welcom to default Route!</h1>");
 });
 
 app.listen(PORT, () => {
