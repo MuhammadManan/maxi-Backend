@@ -1,22 +1,29 @@
 const path = require("path");
 const fs = require("fs");
+const { exit } = require("process");
 
+const p = path.join(
+  path.dirname(require.main.filename),
+  "data",
+  "products.json"
+);
+// helper function to get data from files
+const getProductsFromFile = (cb) => {
+  fs.readFile(p, (err, fileContent) => {
+    if (err) {
+      cb([]);
+    } else {
+      cb(JSON.parse(fileContent));
+    }
+  });
+};
 module.exports = class {
   constructor(t) {
     this.title = t;
   }
 
   save() {
-    const p = path.join(
-      path.dirname(require.main.filename),
-      "data",
-      "products.json"
-    );
-    fs.readFile(p, (err, fileContent) => {
-      let products = [];
-      if (!err) {
-        products = JSON.parse(fileContent);
-      }
+    getProductsFromFile((products) => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), (err) => {
         console.log(err);
@@ -25,16 +32,6 @@ module.exports = class {
   }
 
   static fetchAll(cb) {
-    const p = path.join(
-      path.dirname(require.main.filename),
-      "data",
-      "products.json"
-    );
-    fs.readFile(p, (err, fileContent) => {
-      if (err) {
-        cb([]);
-      }
-      cb(JSON.parse(fileContent));
-    });
+    getProductsFromFile(cb);
   }
 };
