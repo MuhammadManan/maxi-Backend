@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const { exit } = require("process");
+// const { exit } = require("process");
 
 const p = path.join(
   path.dirname(require.main.filename),
@@ -17,7 +17,7 @@ const getProductsFromFile = (cb) => {
     }
   });
 };
-module.exports = class {
+module.exports = class Product {
   constructor(title, imageUrl, price, description) {
     this.title = title;
     this.imageUrl = imageUrl;
